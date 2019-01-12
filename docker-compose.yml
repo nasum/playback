@@ -1,7 +1,10 @@
 version: '2'
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile
+    entrypoint: '/app/docker/app/entrypoint.dev.sh'
     ports:
       - '8000:8000'
     links:
@@ -9,8 +12,13 @@ services:
     depends_on:
       - db
     volumes:
-      - .:/code:cached
+      - .:/app:cached
     command: poetry run ./manage.py runserver 0.0.0.0:8000
+    environment:
+      DB_NAME: 'playback_db'
+      DB_USER: 'root'
+      DB_HOST: 'db'
+      DB_PORT: '3306'
   db:
     image: mysql:8.0.13
     environment:
