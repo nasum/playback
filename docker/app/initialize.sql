@@ -1,0 +1,1 @@
+CREATE DATABASE playback_db CHARACTER SET utf8mb4;

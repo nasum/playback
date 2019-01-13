@@ -106,5 +106,6 @@ venv.bak/
 .mypy_cache/
 
 .idea/
+local/app/
 
 

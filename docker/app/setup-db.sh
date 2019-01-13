@@ -1,0 +1,1 @@
+mysql -uplayback -pdocker  -hdb < ./docker/app/initialize.sql
