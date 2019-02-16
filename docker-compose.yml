@@ -20,6 +20,16 @@ services:
       DB_PASSWORD: 'docker'
       DB_HOST: 'db'
       DB_PORT: '3306'
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile
+    entrypoint: '/app/docker/frontend/entrypoint.dev.sh'
+    ports:
+      - '8080:8080'
+    volumes:
+        - .:/app:cached
+    command: yarn run build --watch
   db:
     image: mysql:8.0.13
     volumes:

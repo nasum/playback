@@ -22,6 +22,7 @@ RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 WORKDIR /app
 
 RUN pip install poetry==0.12.11
+RUN yarn global add @vue/cli@3.4.0
 
 ADD . /app
 
